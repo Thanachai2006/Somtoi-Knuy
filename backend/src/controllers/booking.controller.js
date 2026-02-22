@@ -41,7 +41,7 @@ exports.checkIn = async (req, res) => {
 };
 
 // 2. ย้ายออกจากห้อง (Move-out)
-exports.moveOut = async (req, res) => {
+exports.checkOut = async (req, res) => {
   const { roomId } = req.body;
 
   try {
