@@ -10,7 +10,16 @@ exports.register = async (req, res) => {
 
   const userRole = allowedRoles.includes(role) ? role : "USER";
 
+
+
   try {
+    if (!password || password.length < 4) {
+      return res.status(400).json({
+        error:
+          "Password must be at least 4 characters long and contain both letters and numbers",
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
